@@ -10,17 +10,10 @@ namespace Simple.ADF.Entities
     /// Counts number of times an API has been invoked.
     /// </summary>
     [JsonObject(MemberSerialization.OptIn)]
-    public class CallCounter
+    public partial class CallCounter
     {
         [JsonProperty("value")]
         public int Value { get; set; }
-
-        public void Increment() => this.Value += 1;
-
-        public int Count() => this.Value;
-
-        [FunctionName(nameof(CallCounter))]
-        public static Task Run([EntityTrigger] IDurableEntityContext ctx) => ctx.DispatchAsync<CallCounter>();
 
         public static void Increment(IDurableOrchestrationContext ctx, string counterName)
         {

@@ -8,7 +8,7 @@ using Simple.ADF.Models;
 
 namespace Simple.ADF
 {
-    public class Execution
+    public partial class Execution
     {
         private ILogger _logger;
 
@@ -30,7 +30,7 @@ namespace Simple.ADF
                     Category = input.Category
                 });
 
-            CallCounter.Increment(context, nameof(GetEntries));
+            CallCounter.Increment(context, input.Category);
 
             _logger.LogInformation(entries);
         }

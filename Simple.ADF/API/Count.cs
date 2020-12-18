@@ -24,15 +24,16 @@ namespace Simple.ADF.API
 
         [FunctionName(nameof(Count))]
         public async Task<IActionResult> HttpStart(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "Count")] HttpRequest req,
-            [DurableClient] IDurableClient client)
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "Count/{category}")] HttpRequest req,
+            [DurableClient(ConnectionName = "DurableFunctionsStorage", TaskHub = "SimpleADF")] IDurableClient client,
+            string category)
         {
             _logger.LogInformation($"Getting invocation count on Public API.");
 
             return new OkObjectResult(
                 new CountOutput
                 {
-                    Count = await CallCounter.GetCount(client, nameof(GetEntries))
+                    Count = await CallCounter.GetCount(client, category)
                 });
         }
     }

@@ -22,7 +22,7 @@ namespace Simple.ADF
         [FunctionName(nameof(Start))]
         public async Task<IActionResult> HttpStart(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequest req,
-            [DurableClient] IDurableClient client)
+            [DurableClient(ConnectionName = "DurableFunctionsStorage", TaskHub = "SimpleADF")] IDurableClient client)
         {
             string category = (req.Query.TryGetValue("category", out StringValues categoryParams))
                 ? categoryParams.ToString()

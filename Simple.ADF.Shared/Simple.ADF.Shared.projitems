@@ -9,9 +9,11 @@
     <Import_RootNamespace>Simple.ADF.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\CallCounter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\CountOutput.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ExecutionInput.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\GetEntriesInput.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Orchestrations\Execution.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)local.settings.json">
