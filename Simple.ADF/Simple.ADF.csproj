@@ -16,4 +16,5 @@
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </None>
   </ItemGroup>
+  <Import Project="..\Simple.ADF.Shared\Simple.ADF.Shared.projitems" Label="Shared" />
 </Project>
